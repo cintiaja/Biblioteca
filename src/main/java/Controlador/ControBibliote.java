@@ -70,7 +70,7 @@ public class ControBibliote {
     // Pide un código y busca el libro
     private void buscarLibro() {
         String codigo = vista.pedirTexto("Código a buscar: ");
-        vista.cargando("  Buscando entre los vagones");
+        vista.cargando("  Buscando");
         Libro encontrado = librosNuevos.buscarPorCodigo(codigo);
 
         if (encontrado != null) {
