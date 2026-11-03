@@ -13,9 +13,8 @@ public class ControBibliote {
         vista = new Vista();
     }
 
-    /** Repite el menú hasta que el usuario elija salir (0). */
     public void iniciar() {
-        vista.mostrarBienvenida();
+        vista.mostrarBienvenida();//esto hace como blucle repite todo hasta que el usuario ponga sair
 
         int opcion;
         do {
@@ -52,17 +51,17 @@ public class ControBibliote {
         Libro libro = new Libro(codigo, titulo, autor);
 
         if (librosNuevos.agregar(libro)) {
-            vista.cargando("  Guardando en el estante");
+            vista.cargando("  Guardando en el estante");//un mensaje que carga
             vista.mostrarExito("Libro agregado correctamente.");
         } else {
-            vista.mostrarError("La lista está llena (máximo 20 libros).");
+            vista.mostrarError("La lista está llena (máximo 20 libros).");//conectamos todo
         }
     }
 
     // Muestra todos los libros en orden de llegada
     private void mostrarLibros() {
         if (librosNuevos.getTamanio() == 0) {
-            vista.mostrarInfo("Todavía no hay libros nuevos.");
+            vista.mostrarError("Todavía no hay libros nuevos.");
         } else {
             vista.mostrarLista("LIBROS NUEVOS", librosNuevos.listar());
         }
@@ -88,7 +87,7 @@ public class ControBibliote {
         if (eliminado != null) {
             vista.mostrarExito("Se eliminó: " + eliminado);
         } else {
-            vista.mostrarInfo("No hay libros para eliminar.");
+            vista.mostrarError("No hay libros para eliminar.");
         }
     }
 }

@@ -12,11 +12,7 @@ public class ListaSimple {
         tamanio = 0;
     }
 
-    /**
-     * Agrega un libro al final de la lista.
-     * Devuelve true si se pudo, false si ya está llena.
-     */
-    public boolean agregar(Libro libro) {
+    public boolean agregar(Libro libro) {//agrega libros
         // Si ya hay 20, no cabe otro
         if (tamanio >= MAXIMO) {
             return false;
@@ -39,9 +35,6 @@ public class ListaSimple {
         return true;
     }
 
-    /**
-     * Devuelve todos los libros en orden de llegada, como texto.
-     */
     public String listar() {
         if (cabeza == null) {
             return "No hay libros nuevos.";
@@ -56,11 +49,8 @@ public class ListaSimple {
         return texto.toString();
     }
 
-    /**
-     * Busca un libro por su código.
-     * Devuelve el libro, o null si no existe.
-     */
-    public Libro buscarPorCodigo(String codigo) {
+
+    public Libro buscarPorCodigo(String codigo) {//busca el libro por codigo
         Nodo actual = cabeza;
         while (actual != null) {
             if (actual.getLibro().getCodigo().equals(codigo)) {
@@ -68,14 +58,11 @@ public class ListaSimple {
             }
             actual = actual.getSiguiente();
         }
-        return null; // revisamos todo el tren y no estaba
+        return null; // revisamos pero no esta y regresa nulo
     }
 
-    /**
-     * Elimina el último libro agregado (LIFO) y lo devuelve.
-     * Devuelve null si la lista estaba vacía.
-     */
-    public Libro eliminarUltimo() {
+
+    public Libro eliminarUltimo() {//aqui elimina el ultimo libro
         if (cabeza == null) {
             return null; // no hay nada que quitar
         }

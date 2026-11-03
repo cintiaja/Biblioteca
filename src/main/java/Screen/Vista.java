@@ -15,18 +15,15 @@ public class Vista {
     // Scanner: la "oreja" que escucha lo que escribes en el teclado
     private Scanner teclado = new Scanner(System.in);
 
-    // ===== EFECTOS ESPECIALES =====
 
-    /** Pausa el programa unos milisegundos (para los efectos). */
     private void pausa(int milisegundos) {
         try {
             Thread.sleep(milisegundos);
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e) {//como si cargara
             Thread.currentThread().interrupt();
         }
     }
 
-    /** Escribe el texto letra por letra, como si alguien lo tecleara. */
     private void escribirLento(String texto, int milisegundos) {
         for (char letra : texto.toCharArray()) {
             System.out.print(letra);
@@ -36,8 +33,7 @@ public class Vista {
         System.out.println();
     }
 
-    /** Animación de "cargando" con puntitos. */
-    public void cargando(String mensaje) {
+    public void cargando(String mensaje) {//son los puntitos que vemos
         System.out.print(MORADO + mensaje + RESET);
         for (int i = 0; i < 3; i++) {
             pausa(250);
@@ -46,19 +42,18 @@ public class Vista {
         System.out.println();
     }
 
-    // ===== PANTALLAS =====
 
-    /** Pantalla de bienvenida. */
+
     public void mostrarBienvenida() {
         System.out.println();
-        System.out.println(MORADO + RESET + AMARILLO + NEGRITA + "      BIBLIOTECA  \"EL SABER\"      " + RESET);
+        System.out.println( NEGRITA+ MORADO + "      BIBLIOTECA  \"EL SABER\"      " );
         System.out.print(AMARILLO);
         System.out.print(RESET);
         cargando("   Preparando los estantes");
     }
 
-    /** Muestra el menú y devuelve la opción elegida (-1 si no es número). */
-    public int mostrarMenu() {
+
+    public int mostrarMenu() {//el menu
         System.out.println();
         System.out.println(MORADO + RESET + ROSA + NEGRITA + "MENÚ PRINCIPAL" + RESET);
         System.out.println(MORADO +  RESET + CIAN + "SECCIÓN A · Libros Nuevos" + RESET);
@@ -77,36 +72,26 @@ public class Vista {
         }
     }
 
-    /** Dibuja una línea del menú, por ejemplo:  [1] Agregar libro */
-    private void opcion(String numero, String texto) {
+    private void opcion(String numero, String texto) {//cuando el usuario busca un libro sale asi
         System.out.println(MORADO +  RESET + AMARILLO + "[" + numero + "]" + RESET + " " + texto);
     }
 
-    // ===== ENTRADA Y MENSAJES =====
 
-    /** Hace una pregunta y devuelve lo que la persona escribió. */
-    public String pedirTexto(String mensaje) {
+    public String pedirTexto(String mensaje) {//pide la lidta de los libros
         System.out.print(ROSA + "  -> " + RESET + mensaje);
         return teclado.nextLine().trim();
     }
 
-    /** Mensaje de éxito (verde con palomita). */
-    public void mostrarExito(String mensaje) {
-        System.out.println(VERDE + NEGRITA + "  ✔ " + mensaje + RESET);
+
+    public void mostrarExito(String mensaje) {//el mensaje de a lado cuando se hace algo exitoso
+        System.out.println(VERDE + NEGRITA + "  :) " + mensaje + RESET);
+    }
+    public void mostrarError(String mensaje) {//el mensaje de a lado cuando se hace algo exitoso
+        System.out.println(ROJO + "  :( " + mensaje + RESET);
     }
 
-    /** Mensaje de error (rojo con tache). */
-    public void mostrarError(String mensaje) {
-        System.out.println(ROJO + NEGRITA + "  ✘ " + mensaje + RESET);
-    }
 
-    /** Mensaje informativo (cian). */
-    public void mostrarInfo(String mensaje) {
-        System.out.println(CIAN + "  ℹ " + mensaje + RESET);
-    }
-
-    /** Muestra una lista de libros como tarjetitas, una por línea. */
-    public void mostrarLista(String titulo, String contenido) {
+    public void mostrarLista(String titulo, String contenido) {//muestra la lista de libros
         System.out.println();
         System.out.println( NEGRITA + titulo + RESET);
         for (String linea : contenido.split("\n")) {
@@ -116,8 +101,7 @@ public class Vista {
         }
     }
 
-    /** Despedida. */
-    public void mostrarDespedida() {
+    public void mostrarDespedida() {//cuando le pone salir
         System.out.println();
         System.out.print(MORADO + NEGRITA);
         escribirLento("  ¡Gracias por visitarnos", 30);//se muestra en una cantidad de 30 milisegundos
